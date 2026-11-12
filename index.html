@@ -102,7 +102,668 @@ footer {
 </main>
 
 <script>
-const hazardLibrary = [];
+const hazardLibrary = [
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "High vacuum suction",
+    keywords: ["vacuum truck", "vac truck", "vacuuming", "suction", "vacuum hose"],
+    controls: [
+      "Utilize approved attachments.",
+      "Do not work from the end of the hose.",
+      "Release suction before clearing blockages."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Hose whip or uncontrolled movement",
+    keywords: ["hose whip", "hose movement", "vacuum hose", "hose handling"],
+    controls: [
+      "Control hose movement.",
+      "Secure hoses using appropriate methods.",
+      "Use appropriate signage and clear labeling."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Moving truck or equipment",
+    keywords: ["backing", "driving", "truck movement", "moving truck", "spotter", "vacuum truck"],
+    controls: [
+      "Establish an exclusion zone.",
+      "Use a spotter when backing or working in areas with limited visibility or tight spaces.",
+      "Use designated travel paths."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Pinch and crush points",
+    keywords: ["pinch point", "crush point", "hydraulic", "truck doors", "moving components"],
+    controls: [
+      "Keep clear of moving components, hydraulic mechanisms, and doors."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Opening bed to clean",
+    keywords: ["opening bed", "cleaning truck", "truck bed", "open vacuum truck"],
+    controls: [
+      "Verify zero vacuum and pressure before opening."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Noise exposure",
+    keywords: ["noise", "loud equipment", "vacuum truck", "hearing"],
+    controls: [
+      "Wear appropriate hearing protection.",
+      "Use double hearing protection when needed."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Airborne dust while unloading",
+    keywords: ["unloading", "dumping", "ash unloading", "dust unloading"],
+    controls: [
+      "Use an enclosed or controlled unloading area.",
+      "Use dust suppression where compatible with the material and process."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Dry dust generation",
+    keywords: ["dry dust", "dust", "fly ash", "ash", "powder", "dry material"],
+    controls: [
+      "Assess exposure.",
+      "Suppress dust where appropriate.",
+      "Select appropriate respiratory protection."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Splash back",
+    keywords: ["splash", "splash back", "chemical hose", "spraying"],
+    controls: [
+      "Wear protective clothing.",
+      "Use a face shield or safety glasses/goggles when dealing with chemicals.",
+      "Maintain controlled hose positioning."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Hot ash or hot liquids",
+    keywords: ["hot ash", "hot liquid", "hot material", "temperature", "thermal"],
+    controls: [
+      "Verify material temperature.",
+      "Wear appropriate PPE, such as leather gloves and flame-resistant clothing."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Corrosive liquids",
+    keywords: ["corrosive", "acid", "chemical", "caustic"],
+    controls: [
+      "Verify chemical identity and concentration using the SDS.",
+      "Select compatible PPE.",
+      "Know the locations of emergency showers."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Combustible dust",
+    keywords: ["combustible dust", "flammable dust", "ignition source", "dust explosion"],
+    controls: [
+      "Eliminate ignition sources.",
+      "Use suitable bonding methods.",
+      "Use appropriately rated equipment."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Material overflow or overfilling tank",
+    keywords: ["overfill", "overflow", "tank level", "tank capacity", "filling tank"],
+    controls: [
+      "Monitor tank levels and indicators.",
+      "Follow established fill limits.",
+      "Stop filling before capacity is exceeded."
+    ]
+  },
+  {
+    category: "Vacuum Truck Operations",
+    hazard: "Static buildup",
+    keywords: ["static", "static electricity", "bonding", "grounding"],
+    controls: [
+      "Assess material flammability.",
+      "Use approved conductive hoses.",
+      "Bond and ground equipment."
+    ]
+  },
+  {
+    category: "Atmospheric and Health Hazards",
+    hazard: "Hydrogen sulfide (H2S) exposure",
+    keywords: ["h2s", "hydrogen sulfide", "sour gas", "gas monitor"],
+    controls: [
+      "Use a calibrated gas monitor.",
+      "Provide ventilation.",
+      "Evacuate when necessary.",
+      "Monitor for symptoms, including at low exposure levels."
+    ]
+  },
+  {
+    category: "Atmospheric and Health Hazards",
+    hazard: "Oxygen-deficient or oxygen-enriched atmosphere",
+    keywords: ["oxygen deficient", "oxygen deficiency", "oxygen enriched", "low oxygen", "confined space"],
+    controls: [
+      "Use suitable atmospheric monitoring and controls.",
+      "Follow applicable confined-space requirements."
+    ]
+  },
+  {
+    category: "Atmospheric and Health Hazards",
+    hazard: "Toxic vapors or gases",
+    keywords: ["toxic vapor", "toxic gas", "fumes", "vapors", "gas exposure"],
+    controls: [
+      "Review the SDS.",
+      "Assess exposure.",
+      "Use appropriate containment, ventilation, monitoring, and respiratory protection."
+    ]
+  },
+  {
+    category: "Atmospheric and Health Hazards",
+    hazard: "Heat stress while wearing PPE",
+    keywords: ["heat stress", "hot weather", "high temperature", "heat exposure", "heavy ppe"],
+    controls: [
+      "Establish work/rest cycles.",
+      "Maintain hydration.",
+      "Allow acclimatization.",
+      "Provide shade or cooling.",
+      "Monitor environmental conditions and PPE burden."
+    ]
+  },
+  {
+    category: "Atmospheric and Health Hazards",
+    hazard: "Contaminated clothing",
+    keywords: ["contaminated clothing", "contamination", "decontamination", "dirty clothing"],
+    controls: [
+      "Follow established decontamination procedures.",
+      "Prevent contaminated clothing from entering break rooms or clean areas when necessary."
+    ]
+  }
+  ,
+  {
+    category: "Truck Movement, Setup and Site Conditions",
+    hazard: "Vehicle rollover",
+    keywords: ["rollover", "vehicle rollover", "uneven ground", "slope", "truck setup"],
+    controls: [
+      "Assess ground conditions, slope, and tank load.",
+      "Follow vehicle operating limits."
+    ]
+  },
+  {
+    category: "Truck Movement, Setup and Site Conditions",
+    hazard: "Hoses across walkways or access routes",
+    keywords: ["hose across walkway", "hoses across", "access route", "trip hazard", "hose ramp"],
+    controls: [
+      "Route and secure hoses.",
+      "Use hose ramps or barriers where appropriate.",
+      "Maintain clear access and egress."
+    ]
+  },
+  {
+    category: "Truck Movement, Setup and Site Conditions",
+    hazard: "Working at heights on truck tanks or platforms",
+    keywords: ["working at heights", "working at height", "truck tank", "truck platform", "climbing truck"],
+    controls: [
+      "Avoid climbing where possible.",
+      "Use designated access systems and fall protection.",
+      "Never stand on hoses or unsecured equipment."
+    ]
+  },
+  {
+    category: "Truck Movement, Setup and Site Conditions",
+    hazard: "Fatigue during long shifts",
+    keywords: ["fatigue", "long shift", "12 hour shift", "tired", "extended shift"],
+    controls: [
+      "Manage work hours and rest periods.",
+      "Monitor fatigue.",
+      "Rotate tasks where appropriate.",
+      "Prohibit equipment operation when impairment makes work unsafe."
+    ]
+  },
+  {
+    category: "Truck Movement, Setup and Site Conditions",
+    hazard: "Manual handling of hoses and fittings",
+    keywords: ["manual handling", "lifting hose", "moving hose", "hose fittings", "heavy hose"],
+    controls: [
+      "Use manageable hose lengths.",
+      "Apply proper lifting and handling techniques."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "High-pressure water injection",
+    keywords: ["water blasting", "water blast", "hand lancing", "hand lance", "high pressure", "hydroblasting"],
+    controls: [
+      "Establish an exclusion zone.",
+      "Allow trained and authorized personnel only.",
+      "Never point the nozzle at a person or body part."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Direct contact with blasting stream",
+    keywords: ["blasting stream", "water jet", "water stream", "high pressure water"],
+    controls: [
+      "Never place hands, feet, or any body part in the stream.",
+      "Follow approved procedures and use barriers."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Hose or fitting failure",
+    keywords: ["hose failure", "fitting failure", "coupling", "hose connection", "pressure rating"],
+    controls: [
+      "Inspect hoses, fittings, couplings, and restraints.",
+      "Verify components are rated for maximum operating pressure.",
+      "Remove damaged equipment from service."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Accidental trigger activation",
+    keywords: ["trigger", "deadman", "trigger activation", "safety lock"],
+    controls: [
+      "Ensure trigger controls, safety locks, and deadman controls function reliably.",
+      "Never bypass safety devices."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Nozzle blockage or obstruction",
+    keywords: ["nozzle blockage", "blocked nozzle", "nozzle obstruction", "clearing nozzle"],
+    controls: [
+      "Shut down, isolate, and fully depressurize before inspecting or clearing blockages."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Residual pressure",
+    keywords: ["residual pressure", "stored pressure", "depressurize", "disconnect hose"],
+    controls: [
+      "Isolate the pump.",
+      "Release stored pressure using the designated procedure.",
+      "Verify zero pressure before disconnecting."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Damaged or deteriorating hose",
+    keywords: ["damaged hose", "worn hose", "bulging hose", "exposed wire", "kinked hose"],
+    controls: [
+      "Inspect the full hose length for cuts, abrasions, bulges, exposed wires, kinks, and damaged fittings.",
+      "Replace defective hoses."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Flying debris",
+    keywords: ["flying debris", "debris", "projectiles", "blasting debris"],
+    controls: [
+      "Wear suitable eye protection and protective clothing.",
+      "Use barriers and establish an exclusion zone."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Poor visibility from spray or mist",
+    keywords: ["spray", "mist", "poor visibility", "water fog"],
+    controls: [
+      "Provide adequate lighting.",
+      "Control spray where practical.",
+      "Stop work if visibility prevents safe operation."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Excessive reaction force or loss of balance",
+    keywords: ["reaction force", "loss of balance", "nozzle force", "unstable stance"],
+    controls: [
+      "Use equipment designed for the pressure and nozzle configuration.",
+      "Maintain a stable working position."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Loss of grip or lance control",
+    keywords: ["loss of grip", "lance control", "lance handling"],
+    controls: [
+      "Use suitable handholds and approved operator support.",
+      "Maintain a stable grip and stance.",
+      "Stop if control is compromised."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Incorrect body positioning",
+    keywords: ["body positioning", "overreaching", "awkward position", "jet path"],
+    controls: [
+      "Maintain stable footing.",
+      "Avoid overreaching.",
+      "Keep the body outside the projected jet path and potential hose movement."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Lancing overhead or in awkward positions",
+    keywords: ["overhead lancing", "overhead blasting", "overhead work", "awkward lancing"],
+    controls: [
+      "Secure loose material where feasible.",
+      "Wear head and face protection.",
+      "Avoid unsafe overhead positions."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Water penetration through clothing or footwear",
+    keywords: ["water penetration", "wet clothing", "waterproof clothing", "water footwear"],
+    controls: [
+      "Wear task-appropriate protective clothing and footwear rated for the pressure.",
+      "Never rely on PPE to stop a high-pressure jet."
+    ]
+  },
+  {
+    category: "High-Pressure Water Blasting and Hand Lancing",
+    hazard: "Inadequate communication",
+    keywords: ["communication", "start stop", "emergency stop", "hand signals"],
+    controls: [
+      "Establish start/stop protocols and emergency stop signals.",
+      "Agree on a communication method before pressurization."
+    ]
+  }
+  ,
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Impact injuries to hands",
+    keywords: ["impact injuries", "hand impact", "hammering", "striking", "rodding"],
+    controls: [
+      "Wear required impact-resistant gloves.",
+      "Keep hands out of the line of fire and away from impact points."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Rod slipping or rebounding",
+    keywords: ["rod slipping", "rod rebound", "rodding", "hopper rod"],
+    controls: [
+      "Use the correct rod or tool.",
+      "Maintain stable footing, controlled force, and proper body positioning."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Sudden release of compacted ash or material",
+    keywords: ["compacted ash", "ash release", "material release", "hopper buildup", "ash buildup"],
+    controls: [
+      "Keep personnel clear of discharge points and above potential material release paths."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Awkward posture or repetitive rodding",
+    keywords: ["repetitive rodding", "awkward posture", "repetitive motion", "overreaching"],
+    controls: [
+      "Use suitable rod length and positioning.",
+      "Avoid overreaching and excessive force."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Hot ash, hopper surface, or vacuum line",
+    keywords: ["hot hopper", "hot ash", "hot vacuum line", "hot surface"],
+    controls: [
+      "Wear appropriate thermal protection, including long sleeves and flame-resistant clothing where required."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Dust inhalation",
+    keywords: ["dust inhalation", "hopper dust", "fly ash", "ash dust"],
+    controls: [
+      "Use dust suppression where suitable.",
+      "Conduct exposure assessments and use respiratory protection as required by the respiratory protection program."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Struck by rod or tool",
+    keywords: ["struck by rod", "tool strike", "rod swing", "rod tool"],
+    controls: [
+      "Inspect rods and tools before use.",
+      "Maintain tool control.",
+      "Keep coworkers clear of the swing and rebound zone."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Falls or engulfment",
+    keywords: ["engulfment", "fall protection", "hopper entry", "hopper work", "fall hazard"],
+    controls: [
+      "Use required fall protection.",
+      "Use an approved anchor point.",
+      "Inspect fall protection equipment.",
+      "Maintain 100% tie-off."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Dropped tools or rods",
+    keywords: ["dropped tools", "dropped rods", "falling tools", "overhead tools"],
+    controls: [
+      "Secure tools where practical.",
+      "Keep personnel clear of areas below.",
+      "Wear required head protection."
+    ]
+  },
+  {
+    category: "Rodding Hoppers and Hopper Work",
+    hazard: "Restricted movement while wearing fall protection",
+    keywords: ["restricted movement", "lifeline", "harness movement", "fall protection equipment"],
+    controls: [
+      "Use compatible equipment.",
+      "Route lifelines to avoid snagging.",
+      "Verify the employee can perform the task and exit safely."
+    ]
+  },
+  {
+    category: "Fire Hosing",
+    hazard: "Loss of control",
+    keywords: ["fire hose", "fire hosing", "hose pressure", "hose control"],
+    controls: [
+      "Open and close valves gradually.",
+      "Maintain a stable stance and firm grip.",
+      "Reposition with the hose off."
+    ]
+  },
+  {
+    category: "Fire Hosing",
+    hazard: "Hose kinking or snags",
+    keywords: ["hose kink", "kinked hose", "hose snag", "fire hose"],
+    controls: [
+      "Route hoses to avoid sharp bends and obstructions.",
+      "Monitor hose movement.",
+      "Stop water flow before correcting kinks or snags."
+    ]
+  },
+  {
+    category: "Fire Hosing",
+    hazard: "Slippery floors",
+    keywords: ["slippery floor", "wet floor", "standing water", "sludge", "slip hazard"],
+    controls: [
+      "Maintain good housekeeping.",
+      "Wear slip-resistant footwear.",
+      "Avoid standing in accumulated water or sludge when necessary."
+    ]
+  },
+  {
+    category: "Fire Hosing",
+    hazard: "Electrical equipment",
+    keywords: ["electrical equipment", "electrical hazard", "energized equipment", "hosing electrical"],
+    controls: [
+      "Identify electrical hazards before hosing.",
+      "Protect or isolate equipment.",
+      "Do not direct water at energized equipment."
+    ]
+  }
+  ,
+  {
+    category: "Lifting Material and Tools",
+    hazard: "Heavy lifting or strains",
+    keywords: ["heavy lifting", "lifting material", "lifting tools", "manual lifting", "strain"],
+    controls: [
+      "Assess the weight and travel route.",
+      "Use mechanical lifting equipment when feasible.",
+      "Use team lifting for manageable loads."
+    ]
+  },
+  {
+    category: "Lifting Material and Tools",
+    hazard: "Dropped pipe, tools, or material",
+    keywords: ["dropped pipe", "dropped material", "dropped tools", "lifting pipe", "unsecured load"],
+    controls: [
+      "Secure all material using suitable attachments.",
+      "Inspect rigging.",
+      "Never lift unsecured material."
+    ]
+  },
+  {
+    category: "Lifting Material and Tools",
+    hazard: "Falling objects",
+    keywords: ["falling objects", "suspended load", "drop zone", "overhead lifting"],
+    controls: [
+      "Barricade the drop zone beneath the lifting path and landing area.",
+      "Exclude unauthorized personnel.",
+      "Never stand or walk beneath suspended loads.",
+      "Use a spotter when needed."
+    ]
+  },
+  {
+    category: "Lifting Material and Tools",
+    hazard: "Pipe swinging, shifting, or rotating",
+    keywords: ["pipe swinging", "swinging load", "shifting load", "rotating pipe", "tag line"],
+    controls: [
+      "Use tag lines or other suitable methods.",
+      "Keep personnel clear of the load travel path.",
+      "Lift slowly and avoid sudden starts or stops.",
+      "Stop if the load becomes unstable."
+    ]
+  },
+  {
+    category: "Lifting Material and Tools",
+    hazard: "Poor housekeeping and trip hazards",
+    keywords: ["poor housekeeping", "trip hazard", "clutter", "tools on floor", "loose material"],
+    controls: [
+      "Keep lifting areas and access routes clear of tools, hoses, cords, and loose material.",
+      "Stage material in designated locations."
+    ]
+  },
+  {
+    category: "Lifting Material and Tools",
+    hazard: "Inadequate coordination during multi-floor lifts",
+    keywords: ["multi floor lift", "multiple floors", "floor to floor", "coordinated lift"],
+    controls: [
+      "Conduct a pre-lift briefing.",
+      "Review load weight, lifting method, equipment capacity, personnel assignments, communication, drop zones, emergency stop signals, and landing location."
+    ]
+  },
+  {
+    category: "Working Around Other Contractors",
+    hazard: "Struck-by hazards",
+    keywords: ["other contractors", "contractor equipment", "struck by", "mobile equipment", "simultaneous work"],
+    controls: [
+      "Maintain awareness of surrounding work.",
+      "Maintain safe distances from moving equipment.",
+      "Coordinate work areas before beginning."
+    ]
+  },
+  {
+    category: "Working Around Other Contractors",
+    hazard: "Crane operations and suspended loads",
+    keywords: ["crane", "crane operation", "crane swing", "suspended load", "crane lifting"],
+    controls: [
+      "Stay outside established crane swing areas, barricaded areas, and suspended-load drop zones.",
+      "Never walk or work beneath suspended loads.",
+      "Stop work if anyone enters the crane exclusion zone."
+    ]
+  },
+  {
+    category: "Working Around Other Contractors",
+    hazard: "Falling material from overhead work",
+    keywords: ["overhead work", "overhead contractor", "falling material", "work above"],
+    controls: [
+      "Identify overhead work.",
+      "Establish exclusion zones.",
+      "Do not work beneath overhead operations without adequate controls."
+    ]
+  },
+  {
+    category: "Working Around Other Contractors",
+    hazard: "Welding sparks, slag, or hot material",
+    keywords: ["welding", "welding sparks", "slag", "hot work", "hot material"],
+    controls: [
+      "Keep combustibles away from hot work.",
+      "Protect hoses and equipment from sparks and hot slag.",
+      "Suspend work if hazards cannot be controlled."
+    ]
+  },
+  {
+    category: "Working Around Other Contractors",
+    hazard: "Overlapping work or conflicting operations",
+    keywords: ["overlapping work", "conflicting operations", "simultaneous operations", "simops", "multiple contractors"],
+    controls: [
+      "Review simultaneous operations, permits, restricted areas, and schedule conflicts.",
+      "Sequence work to eliminate or reduce incompatible activities."
+    ]
+  },
+  {
+    category: "Working Around Other Contractors",
+    hazard: "Changing site conditions or new hazards",
+    keywords: ["changing conditions", "new hazards", "changing site", "site conditions", "changing barricades"],
+    controls: [
+      "Reassess when contractors start tasks, equipment moves, barricades change, or conditions change.",
+      "Conduct a new hazard review when needed.",
+      "Stop work and notify supervision if hazards are not controlled."
+    ]
+  },
+  {
+    category: "Conveyor Belts and Rotating Equipment",
+    hazard: "Caught-in or entanglement",
+    keywords: ["conveyor", "conveyor belt", "belt", "pulley", "roller", "rotating equipment", "entanglement"],
+    controls: [
+      "Maintain a safe distance from moving belts, pulleys, rollers, and drive components.",
+      "Never reach across, under, or around moving equipment.",
+      "Keep clothing, gloves, tools, and loose items clear."
+    ]
+  },
+  {
+    category: "Conveyor Belts and Rotating Equipment",
+    hazard: "Unexpected belt startup",
+    keywords: ["unexpected startup", "belt startup", "conveyor startup", "cleaning conveyor", "clearing conveyor", "working on conveyor"],
+    controls: [
+      "Follow site lockout/tagout (LOTO) procedures.",
+      "Verify zero energy and isolation before cleaning, clearing, or working on equipment."
+    ]
+  },
+  {
+    category: "Conveyor Belts and Rotating Equipment",
+    hazard: "Contact with rotating equipment or exposed drive components",
+    keywords: ["exposed drive", "missing guard", "damaged guard", "unguarded equipment", "drive components"],
+    controls: [
+      "Do not remove, bypass, or defeat guards.",
+      "Report missing or damaged guards.",
+      "Do not work in exposed hazard areas until appropriate controls are established."
+    ]
+  }
+];
+
+
 
 function generateControls() {
   const job = document.getElementById("job").value.trim().toLowerCase();
