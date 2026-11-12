@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>MPW Hazard & Control Generator</title> <style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 20px;
+  background: #f2f4f6;
+  color: #202a35;
+  font-family: Arial, sans-serif;
+}
+header {
+  background: #17365d;
+  color: white;
+  padding: 22px 18px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+header h1 { margin: 0 0 8px; font-size: 23px; } header p { margin: 0; font-size: 14px; } main {
+  max-width: 760px;
+  margin: auto;
+}
+section {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 7px #00000012;
+}
+label { display: block; font-weight: bold; margin-bottom: 9px; } textarea {
+  width: 100%;
+  min-height: 125px;
+  padding: 12px;
+  border: 1px solid #aab4bf;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 16px;
+  resize: vertical;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 7px;
+  background: #17365d;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button.secondary { background: #526477; } .result {
+  border-left: 5px solid #d18b22;
+  background: #f8f9fa;
+  padding: 13px;
+  margin: 12px 0;
+  border-radius: 5px;
+}
+.result h3 { margin: 0 0 8px; font-size: 16px; } .result p { margin: 0 0 8px; } .result ul { margin: 6px 0 0; padding-left: 21px; } .result li { margin-bottom: 6px; } .notice {
+  font-size: 13px;
+  color: #596674;
+  line-height: 1.5;
+}
+#results { display: none; }
+footer {
+  text-align: center;
+  color: #65717d;
+  font-size: 12px;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>MPW Health & Safety</h1>
+  <p>Hazard & Control Generator</p>
+</header>
+
+<section>
+  <label for="job">Describe the work being performed</label>
+  <textarea id="job" placeholder="Example: We are using a vacuum truck to clean ash from a hopper. We will be working around other contractors and using hoses across the work area."></textarea>
+  <button onclick="generateControls()">Identify Hazards & Controls</button>
+  <button class="secondary" onclick="clearResults()">Clear</button>
+</section>
+
+<section id="results">
+  <h2>Identified Hazards & Controls</h2>
+  <div id="output"></div>
+  <button onclick="window.print()">Print Results</button>
+  <button class="secondary" onclick="copyResults()">Copy Results</button> </section>
+
+<section>
+  <p class="notice">
+    <strong>Important:</strong> This tool is intended to assist with hazard recognition and control selection. It does not replace a site-specific JSA, permits, required testing, energy isolation, exposure assessments, or other required safety procedures. Review all hazards and controls with supervision before work begins.
+  </p>
+</section>
+
+<footer>MPW Health & Safety</footer>
+</main>
+
+<script>
+const hazardLibrary = [];
+
+function generateControls() {
+  const job = document.getElementById("job").value.trim().toLowerCase();
+  const results = document.getElementById("results");
+  const output = document.getElementById("output");
+
+  if (!job) {
+    alert("Enter a description of the work first.");
+    return;
+  }
+
+  const matches = hazardLibrary.filter(item =>
+    item.keywords.some(word => job.includes(word))
+  );
+
+  output.innerHTML = "";
+
+  if (matches.length === 0) {
+    output.textContent = "No direct matches found. Review the task with supervision and identify hazards specific to the work area.";
+  } else {
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result";
+
+      const heading = document.createElement("h3");
+      heading.textContent = item.hazard;
+
+      const category = document.createElement("p");
+      category.textContent = item.category;
+      category.style.fontWeight = "bold";
+
+      const label = document.createElement("strong");
+      label.textContent = "Required controls:";
+
+      const list = document.createElement("ul");
+      item.controls.forEach(control => {
+        const li = document.createElement("li");
+        li.textContent = control;
+        list.appendChild(li);
+      });
+
+      card.append(heading, category, label, list);
+      output.appendChild(card);
+    });
+  }
+
+  results.style.display = "block";
+  results.scrollIntoView({ behavior: "smooth" }); }
+
+function clearResults() {
+  document.getElementById("job").value = "";
+  document.getElementById("results").style.display = "none";
+  document.getElementById("output").innerHTML = ""; }
+
+function copyResults() {
+  const text = document.getElementById("output").innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Results copied.");
+  });
+}
+</script>
+</body>
+</html>
